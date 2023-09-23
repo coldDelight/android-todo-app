@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "TodoList"
 include(":app")
+include(":data")
+include(":domain")
