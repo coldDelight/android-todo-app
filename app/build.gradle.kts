@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.chan.todolist"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.chan.todolist"
