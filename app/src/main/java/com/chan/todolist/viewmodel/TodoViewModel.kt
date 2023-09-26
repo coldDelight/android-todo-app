@@ -8,6 +8,8 @@ import com.chan.domain.model.DomainTodo
 import com.chan.domain.usecase.TodoUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -15,14 +17,15 @@ import javax.inject.Inject
 class TodoViewModel @Inject constructor(
     private val useCase: TodoUseCase
 ) : ViewModel() {
-    private var _itemList: MutableLiveData<List<DomainTodo>> = MutableLiveData(listOf())
-    val itemList: MutableLiveData<List<DomainTodo>>
-        get() = _itemList
+    private var _itemState: MutableStateFlow<List<DomainTodo>?> =
+        MutableStateFlow(null)
+    val itemState: StateFlow<List<DomainTodo>?> = _itemState
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            val tmpDate = "20230925"
-            _itemList.postValue(useCase.invoke(tmpDate))
+    fun getTodo(date:String) {
+        viewModelScope.launch() {
+//            useCase.postTodo(DomainTodo("2개정도 있다","20230926",false,2))
+
+            _itemState.value = useCase.invoke(date)
         }
     }
 }

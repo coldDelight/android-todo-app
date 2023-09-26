@@ -43,8 +43,8 @@ android {
 //        jvmTarget = "18"
         jvmTarget = JavaVersion.VERSION_18.toString()
     }
-    buildFeatures {
-        viewBinding = true
+    buildFeatures{
+        dataBinding = true
     }
 }
 

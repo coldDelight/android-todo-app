@@ -10,7 +10,7 @@ data class TodoEntity(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "date") val date: String,
     @ColumnInfo(name = "isDone") val isDone: Boolean,
-    @ColumnInfo(name = "order") val order: String,
+    @ColumnInfo(name = "order") val order: Int,
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
 
 ) {
