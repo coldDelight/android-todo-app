@@ -1,5 +1,6 @@
 package com.chan.todolist
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,14 +33,20 @@ class FirstFragment : Fragment() {
     ): View {
 
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
+
         return binding.root
 
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val tmpDate = "20230926"
-        viewModel.getTodo(tmpDate)
+        viewModel.getTodo()
+
+        binding.tvDate.text = viewModel.curDate
+        binding.tvWeek.text = viewModel.curDayOfWeek
+        if (viewModel.curDayOfWeek == "일요일"){
+            binding.tvWeek.setTextColor((Color.parseColor("#ED2939")))
+        }
 
         binding.rvTodo.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -53,6 +60,7 @@ class FirstFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.itemState.collectLatest {
                 if (it != null) {
+                    binding.tvTodoCnt.text = it.size.toString()
                     adapter.setData(it)
                 }
             }

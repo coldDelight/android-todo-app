@@ -40,7 +40,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-//        jvmTarget = "18"
+//        jvmTarget = "1.8"
         jvmTarget = JavaVersion.VERSION_18.toString()
     }
     buildFeatures{
