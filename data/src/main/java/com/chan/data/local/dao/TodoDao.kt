@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.chan.data.local.entity.TodoEntity
 
 @Dao
@@ -14,8 +15,8 @@ interface TodoDao {
     @Query("SELECT * FROM todo WHERE date = (:date)")
     suspend fun getTodo(date: String): List<TodoEntity>
 
-//    @Query("SELECT * FROM todo WHERE id = (:id)")
-//    suspend fun checkTodo(id: Int): List<TodoEntity>
+    @Update
+    suspend fun updateTodo(todo: TodoEntity)
 
     @Query("DELETE FROM todo WHERE id=(:id)")
     fun delTodo(id: Int)

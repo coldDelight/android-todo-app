@@ -8,8 +8,8 @@ class TodoUseCase(private val repository: TodoRepository) {
         return repository.getTodo(date)
     }
 
-    suspend fun updateTodo(id: Int) {
-        return repository.updateTodo(id)
+    suspend fun updateTodo(todo: DomainTodo) {
+        return repository.updateTodo(todo)
     }
 
     suspend fun delTodo(id: Int) {

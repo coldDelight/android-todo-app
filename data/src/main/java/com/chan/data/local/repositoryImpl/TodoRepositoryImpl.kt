@@ -21,7 +21,7 @@ class TodoRepositoryImpl @Inject constructor(
         dao.delTodo(id)
     }
 
-    override suspend fun updateTodo(id: Int) {
-        TODO("Not yet implemented")
+    override suspend fun updateTodo(todo:DomainTodo) {
+        dao.updateTodo(TodoEntity(todo.name,todo.date,todo.isDone,todo.order,todo.id))
     }
 }

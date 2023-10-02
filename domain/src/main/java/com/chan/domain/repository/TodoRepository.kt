@@ -9,5 +9,5 @@ interface TodoRepository {
 
     suspend fun delTodo(id: Int)
 
-    suspend fun updateTodo(id: Int)
+    suspend fun updateTodo(todo:DomainTodo)
 }

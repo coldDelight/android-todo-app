@@ -9,14 +9,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp">
 
-        <CheckBox
-            android:id="@+id/btn_todo"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            android:src="?android:attr/textCheckMark"
+            app:backgroundTint="@color/gray_700"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +30,24 @@
             android:id="@+id/tv_todo_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:text="TextView"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_todo"
-            app:layout_constraintStart_toEndOf="@+id/btn_todo"
-            app:layout_constraintTop_toTopOf="@+id/btn_todo" />
+            app:layout_constraintBottom_toBottomOf="@+id/btn_check"
+            app:layout_constraintStart_toEndOf="@+id/btn_check"
+            app:layout_constraintTop_toTopOf="@+id/btn_check" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@color/gray_500"
+            android:clickable="true"
+            android:src="@android:drawable/ic_menu_delete"
+            app:backgroundTint="@color/gray_900"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_check"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_check" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
